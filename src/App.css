@@ -2,6 +2,28 @@
   text-align: center;
 }
 
+.box {
+  border: 2px solid;
+  width: 350px;
+  height: 350px;
+  display:inline-block;
+  margin: 5px;
+  text-align: center;
+}
+
+.CoupangBox {
+  /* border: 2px solid; */
+  width: 350px;
+  height: 500px;
+  display:inline-block;
+  margin: 5px;
+  text-align: center;
+}
+
+.CoupangBox:hover {
+  box-shadow: 1px 1px 10px 10px #ddd;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
