@@ -1,84 +1,57 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-// const name = 'dr.hong';
-// const element = <h1>안녕하세요?{name}</h1>
-
-// const App = (prop_state) => {
-// 	return (
-// 		<>
-// 			name
-// 			<hr />
-// 			{name}
-// 			<hr />
-// 			{element}
-// 		</>
-// 	)
-// }
-
-// const person = {
-// 	name:'홍박사',
-// 	address: '대구시',
-// 	age:25,
-// }
-
-// 최신방식
-// ReactDOM.createRoot(document.querySelector('#root')).render(     // querySelector 사용
-//     // <>{element}</>
-// 		// <App />
-// 		element
-// );
-
-// function printPerson(person){
-// 	// const {name, address, age} = person;
-// 	return (`${name} 입니다. ${address}에서 살고, 나이는 ${age}입니다.`)
-// }
-
-// const person = {
-// 	name:'홍박사',
-// 	address: '대구시',
-// 	age:25,
-// }
-
-// const element = (
-// 	<h1>
-// 		안녕하세요? {printPerson(person)}
-// 	</h1>
-// )
-
-// ReactDOM.createRoot(document.querySelector('#root')).render(
-// 	element
-// );
-
-// const photoUrl = 'https://i.ibb.co/3kwssd7/jing.jpg';
-
-// const element1 = <a href='https://google.com'>클릭</a>
-// const element2 = <img src={photoUrl}></img>
-
-// ReactDOM.createRoot(document.querySelector('#root')).render(
-// 	<>
-// 		{element1}
-// 		{element2}
-// 	</>
-// )
-
-const MyObj = {
-	ColorPicker: function ColorPicker(props) {
-		return <div style={{backgroundColor:props.color}}>선택한 색상은: <b>{props.color}</b></div>
-	}
+const SideMenu = (props) => {
+	console.log(props.showMenu);
+	/* ul>li*(숫자)>lorem => 테스트용 li */
+	// 1rem = 16px
+	return(
+		<>
+			<div
+			style={{
+				border:'1px solid red',
+				width:'200px',
+				height:'94vh', // viewport height, vw : viewport width
+				padding:'10px',
+				textAlign:props.direction,
+				textTransform:'uppercase',
+			}}
+			>
+				{props.direction}
+				<ul style={{listStyle:'none', padding:'0px', lineHeight:'2.6rem'}}>
+					<li>Lorem.</li>
+					<li>Corporis?</li>
+					<li>Quibusdam?</li>
+					<li>Perferendis?</li>
+					<li>Libero!</li>
+					<li>Corporis.</li>
+					<li>Velit!</li>
+					<li>Deserunt.</li>
+					<li>Dolorem!</li>
+					<li>Eius.</li>
+					<li>Ex.</li>
+					<li>Corporis.</li>
+					<li>Perspiciatis!</li>
+					<li>Inventore.</li>
+					<li>Ipsam.</li>
+				</ul>
+			</div>
+		</>
+	);
 }
 
-function BlueColorPicker(){
-	return <MyObj.ColorPicker color = 'skyblue'/>
-}
-
-function RedColorPicker(){
-	return <MyObj.ColorPicker color = 'red'/>
+const App = (props) => {
+	// const showMenu = props.showMenu;
+	const {showMenu} = props
+	return (
+		<>
+			{showMenu && <SideMenu direction='left' />}
+		</>
+	);
 }
 
 ReactDOM.createRoot(document.querySelector('#root')).render(
 	<>
-		<BlueColorPicker/>
-		<RedColorPicker/>
+		<App showMenu={true}/>
 	</>
 )
