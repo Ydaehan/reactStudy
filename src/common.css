@@ -1,0 +1,20 @@
+body, div{
+  margin: 0;
+  padding: 0;
+  font-family: '나눔바른고딕';
+  box-sizing: border-box; 
+  /*
+    border-box: border 위주 
+    content-box: content 위주
+  */
+}
+
+.textBox{
+  background-color: red; width: 500px; height: 100px;
+}
+
+.textBox2{
+  background-color: skyblue; width: 500px; height: 100px;
+  border: 10px solid;
+  box-sizing: content-box;
+}
