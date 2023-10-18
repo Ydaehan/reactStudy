@@ -1,81 +1,40 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState,useEffect,useRef} from 'react';
 import ReactDOM from 'react-dom/client';
 
-// useEffect,useState 예시
-const Info = (props) => {
-  const [name,setName] = useState('');
-  const [pwd,setPwd] = useState('');
+const App = () => {
+	const inputRef = useRef();
 
 	useEffect(() => {
-		console.log('렌더링 완료됨');
-		console.log(
-			{name,pwd}
-			// {name:name, pwd:pwd}
-		);
+		console.log(inputRef.current);
+		inputRef.current.focus();
+	},[]);
 
-		// 로그인처리---> 성공하면
-		return( // cleanup
-			()=>{
-				console.log('뒷처리');
-			}
-		)
-	} 
-	//,[]
-	,[name]
-	);
-
-  const [user,setUser] = useState({name:'',pwd:''});
-
-  const changeName = (e) => {
-    setName(e.target.value);
-  };
-
-  const changePwd = (e) => {
-    setPwd(e.target.value);
-  };
-
-  const changeUser = (e) => {
-    e.preventDefault();
-    setUser({
-      name,
-      pwd
-    });
-  };
-
-  return(
-    <>
-      <form onSubmit={changeUser}>
-        <input value={name} onChange={changeName} />
-        <input value={pwd} onChange={changePwd} /><hr/>
-        <button type='submit'>등록</button>
-      </form>
-      <div>
-        <div><b>이름:</b>{user.name}</div>
-      </div>
-      <div>
-        <div><b>패스워드:</b>{user.pwd}</div>
-      </div>
-    </>
-  );
-};
-
-const App = () => {
-	const [visible,setVisible] = useState(false);
+	const inputID = () => {
+		const value = inputRef.current.value;
+		console.log(value);
+		console.log(value.length);
+		console.log(inputRef.current.size);
+		if(inputRef.current.value.length > 8){
+			alert('아이디의 길이는: 8이하');
+			inputRef.current.value = null;
+		}
+	}
 	return (
 		<>
-			<div 
-				onClick={
-					()=>{
-						setVisible(!visible);
-					}
-				}
-			>
-				<button>
-					{visible?'숨기기':'보이기'}
-				</button>
-			</div>
-			<hr/>
-			{visible && <Info/>}
+			<form>
+				<fieldset style={{padding:'50px'}}> {/* 여러 입력창을 하나의 묶음으로 다룸 */}
+					<legend>회원가입</legend>
+					<label htmlFor='mid'>아이디: </label>
+					<input type="text" ref={inputRef} id="mid" size='24' autoComplete='off' placeholder='아이디 입력창'
+					style={{padding:'10px'}} onChange={inputID}/>
+					<br /><br />
+
+					<label htmlFor='email'>이메일: </label>
+					<input type="text" id="email" size='30' autoComplete='off' placeholder='이메일 입력창'
+					style={{padding:'10px'}} onChange={inputID}/>
+					<br /><br />
+				</fieldset>
+			</form>
 		</>
 	)
 }
