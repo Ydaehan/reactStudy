@@ -1,5 +1,7 @@
 import React,{useState,useEffect,useRef} from 'react';
 import ReactDOM from 'react-dom/client';
+import CoupangBox from './Components/Coupang';
+import './App.css';
 
 const App = () => {
 	const inputRef = useRef();
@@ -41,6 +43,6 @@ const App = () => {
 
 ReactDOM.createRoot(document.querySelector('#root')).render(
 	<>
-		<App/>
+		<CoupangBox name="칠성사이다, 350ml, 48개" price="22,990원" mlPrice="100ml당 403원" arrivalTime="내일 도착 보장"/>
 	</>
 )
